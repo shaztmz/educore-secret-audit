@@ -1,0 +1,6 @@
+services:
+  grading-worker:
+    image: educore/grading:v1
+    environment:
+      - REDIS_CACHE_URL="redis://default:CacheSuperSecretRedisPass55@redis-prod.educore.edu.mx:6379"
+      - S3_EXAM_BUCKET_KEY="AKIARMS55700EXAMPLEKEY"
