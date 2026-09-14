@@ -50,6 +50,7 @@ jobs:
           severity: CRITICAL,HIGH
 
       - name: Generate CycloneDX SBOM
+        if: always()
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: educore-test:latest
@@ -58,6 +59,7 @@ jobs:
           exit-code: '0'
 
       - name: Upload SBOM
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: educore-sbom
