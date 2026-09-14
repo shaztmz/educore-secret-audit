@@ -1,0 +1,30 @@
+title = "EduCore Academy Secret Detection"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "educore-client-secret"
+description = "EduCore OAuth client secret"
+regex = '''(?i)(CLIENT_SECRET)\s*[:=]\s*["']?[A-Za-z0-9!@#$%^&*_.-]{12,}["']?'''
+keywords = ["CLIENT_SECRET"]
+
+[[rules]]
+id = "educore-redis-credential"
+description = "Redis credentials embedded in connection URL"
+regex = '''(?i)redis://[^:\s]+:[^@\s]+@'''
+keywords = ["redis://"]
+
+[[rules]]
+id = "educore-storage-key"
+description = "EduCore storage access key"
+regex = '''AKIA[0-9A-Z]{16}'''
+keywords = ["AKIA"]
+
+[allowlist]
+description = "Allow test and documentation files"
+paths = [
+    '''^tests?/''',
+    '''^docs?/''',
+    '''README\.md$'''
+]
